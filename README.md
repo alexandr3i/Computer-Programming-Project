@@ -1,53 +1,87 @@
-# Computer Programming Project (C)
+# Computer Programming Project (C and C++)
 
-A small **C** console application created as part of a Computer Programming project.
+Console programs for a semestrial Computer Programming project focused on:
+- computing the **determinant** of 3×3 matrices
+- computing the **rank** of 3×3 matrices
+- computing **LCM** and **GCD** of two determinants
 
----
-
-## What’s in this folder
-Inside `Computer Programming Project/` you will find:
-- C source file(s): `*.c`
-- documentation
-
----
-
-## How to compile & run (C)
-
-### Option A - Windows (MinGW-w64)
-1. Install **MinGW-w64** (so you have `gcc` in PATH).
-2. Open **Command Prompt** in the `Computer Programming Project/` folder.
-3. Compile everything in the folder:
-   - `gcc *.c -o app.exe`
-4. Run:
-   - `app.exe`
-
-If you get linker errors, compile with all `.c` files (the command above already does this).
+The main program reads **two 3×3 matrices**, computes their determinants, then displays:
+- **LCM(detA, detB)**
+- **GCD(detA, detB)**
+- **rank(A)** and **rank(B)**
 
 ---
 
-### Option B - Windows (Visual Studio / MSVC)
-1. Open **Developer Command Prompt for VS**
-2. Go to the `Computer Programming Project/` folder.
-3. Compile:
-   - `cl *.c`
-4. Run the generated `.exe` (usually the first `.exe` created in the folder).
+## Repository contents
+
+### Main program
+- `Computer Programming Project.c`  
+  The complete interactive program: reads 2 matrices, computes determinants, LCM/GCD, and ranks.
+
+### Standalone C++ utilities (each can be compiled separately)
+- `determinant.cpp` — determinant calculation
+- `rank_of_matrix.cpp` — rank calculation
+- `euclid.cpp` — GCD using Euclid’s algorithm
+- `multiple.cpp` — basic multiplication helper (used for LCM logic)
+
+### Documentation
+- `Computer-Programming-Project-Documentation.pdf` — project description and flowcharts
 
 ---
 
-### Option C - Linux / macOS (GCC or Clang)
-1. Open a terminal in `Computer Programming Project/`.
-2. Compile:
-   - `gcc *.c -o app`
-   (or `clang *.c -o app`)
-3. Run:
-   - `./app`
+## How the main program works
+
+- **Determinant (3×3):** computed using the triangle (Sarrus-style) method.
+- **GCD:** computed using **Euclid’s algorithm**.
+- **LCM:** computed using multiplication + GCD relationship.
+- **Rank (3×3):**
+  - if det ≠ 0 → rank = 3
+  - else checks a 2×2 minor to decide between rank 2 or 1
 
 ---
 
-## Troubleshooting
-- If the program expects input files, make sure you run it **from the same folder** where those files exist.
-- If the code uses Windows-only functions, compile/run on Windows (or adjust the code for portability).
-- If you see missing header errors, confirm the `*.h` files are in the same folder or included via correct paths.
+## Build & Run
+
+### Windows (MinGW-w64)
+
+Compile the main C program:
+- `gcc "Computer Programming Project.c" -o main.exe`
+
+Run:
+- `main.exe`
+
+Compile any C++ utility (example):
+- `g++ determinant.cpp -o determinant.exe`
+- `determinant.exe`
+
+Repeat for the others:
+- `g++ rank_of_matrix.cpp -o rank.exe`
+- `g++ euclid.cpp -o euclid.exe`
+- `g++ multiple.cpp -o multiple.exe`
+
+---
+
+### Linux / macOS (GCC/Clang)
+
+Compile the main C program:
+- `gcc "Computer Programming Project.c" -o main`
+
+Run:
+- `./main`
+
+Compile any C++ utility (example):
+- `g++ determinant.cpp -o determinant`
+- `./determinant`
+
+---
+
+## Example input (main program)
+
+The program will ask you to enter the 2 matrices (3×3), then prints:
+- determinant of each matrix
+- least common multiple of the two determinants
+- greatest common divisor of the two determinants
+- rank of each matrix
 
 ---
 
